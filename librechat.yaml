@@ -31,8 +31,6 @@ mcpServers:
     initTimeout: 150000
     startup: false
 
-  # REPLACE the X-User-Email value below with your real work email.
-  # It must match an address in the server's USER_ALLOWLIST exactly.
   zoho_crm_read:
     type: streamable-http
     url: 'https://hdm-zoho-mcp-production.up.railway.app/mcp'
@@ -54,6 +52,16 @@ mcpServers:
   zoho_books:
     type: streamable-http
     url: 'https://claude-zohobooks.zohomcp.com/mcp/message'
+    timeout: 60000
+    initTimeout: 150000
+    startup: false
+
+  # Solar & battery fleet telemetry. Bearer token only — no email header needed.
+  solar_telemetry:
+    type: streamable-http
+    url: 'https://tesla-telemetry-mcp-production.up.railway.app/mcp'
+    headers:
+      Authorization: 'Bearer ${HDM_SOLAR_TOKEN}'
     timeout: 60000
     initTimeout: 150000
     startup: false
