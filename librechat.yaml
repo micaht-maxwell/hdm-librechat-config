@@ -31,9 +31,15 @@ mcpServers:
     initTimeout: 150000
     startup: false
 
+  # REPLACE the X-User-Email value below with your real work email.
+  # It must match an address in the server's USER_ALLOWLIST exactly.
   zoho_crm_read:
     type: streamable-http
     url: 'https://hdm-zoho-mcp-production.up.railway.app/mcp'
+    headers:
+      Authorization: 'Bearer ${HDM_ZOHO_TOKEN}'
+      X-User-Email: 'micaht@maxwellpower.com'
+      X-Agent-Surface: 'librechat'
     timeout: 60000
     initTimeout: 150000
     startup: false
