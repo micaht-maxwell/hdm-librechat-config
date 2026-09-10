@@ -1,0 +1,81 @@
+version: 1.3.13
+cache: true
+
+# ---------------------------------------------------------------
+# STEP 1 TEST: OpenRouter models
+# The OPENROUTER_KEY variable already exists in Railway, so this
+# just points LibreChat at it. Nothing secret lives in this file.
+# ---------------------------------------------------------------
+endpoints:
+  custom:
+    - name: 'OpenRouter'
+      apiKey: '${OPENROUTER_KEY}'
+      baseURL: 'https://openrouter.ai/api/v1'
+      models:
+        default: ['anthropic/claude-sonnet-4.5']
+        fetch: true
+      titleConvo: true
+      titleModel: 'current_model'
+      modelDisplayLabel: 'OpenRouter'
+      dropParams: ['stop']
+
+# ---------------------------------------------------------------
+# STEP 2: the three HDM custom connectors.
+# These are plain URLs, so they are the easy ones.
+# ---------------------------------------------------------------
+mcpServers:
+  hdm_knowledge_base:
+    type: streamable-http
+    url: 'https://hdm-knowledge.vercel.app/api/mcp/mcp'
+    timeout: 60000
+    initTimeout: 150000
+    startup: false
+
+  zoho_crm_read:
+    type: streamable-http
+    url: 'https://hdm-zoho-mcp-production.up.railway.app/mcp'
+    timeout: 60000
+    initTimeout: 150000
+    startup: false
+
+  zoho_leads:
+    type: streamable-http
+    url: 'https://hdm-zoho-mcp-leads-production.up.railway.app/mcp'
+    timeout: 60000
+    initTimeout: 150000
+    startup: false
+
+  zoho_books:
+    type: streamable-http
+    url: 'https://claude-zohobooks.zohomcp.com/mcp/message'
+    timeout: 60000
+    initTimeout: 150000
+    startup: false
+
+# ---------------------------------------------------------------
+# STEP 3 (LATER): pull the plugin skills straight from GitHub.
+# Paths below are the REAL ones, confirmed from the repos.
+# Uncomment once GITHUB_SKILLS_TOKEN is saved in Railway.
+# ---------------------------------------------------------------
+# skillSync:
+#   github:
+#     enabled: true
+#     intervalMinutes: 60
+#     runOnStartup: true
+#     sources:
+#       - id: hdm-zoho
+#         owner: iancollins-hdm
+#         repo: hdm-zoho-mcp
+#         ref: main
+#         paths:
+#           - plugin/skills
+#         skillDiscoveryDepth: 2
+#         token: '${GITHUB_SKILLS_TOKEN}'
+#       - id: solar-telemetry
+#         owner: iancollins-hdm
+#         repo: hdm-solar-telemetry
+#         ref: master
+#         paths:
+#           - plugins/solar-telemetry/skills
+#         skillDiscoveryDepth: 2
+#         token: '${GITHUB_SKILLS_TOKEN}'
