@@ -22,7 +22,7 @@ endpoints:
 # ---------------------------------------------------------------
 modelSpecs:
   enforce: false
-  prioritize: true
+  prioritize: false
   list:
     - name: 'or-sonnet'
       label: 'Claude Sonnet 4.5'
