@@ -50,6 +50,7 @@ mcpServers:
     url: 'https://hdm-knowledge.vercel.app/api/mcp/mcp'
     headers:
       Authorization: 'Bearer ${HDM_KB_TOKEN}'
+      x-org-slug: 'hdm'
     timeout: 60000
     initTimeout: 150000
     startup: false
