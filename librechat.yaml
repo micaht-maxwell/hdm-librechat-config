@@ -22,7 +22,9 @@ endpoints:
 # ---------------------------------------------------------------
 modelSpecs:
   enforce: false
-  prioritize: false
+  prioritize: true
+  addedEndpoints:
+    - agents
   list:
     - name: 'or-sonnet'
       label: 'Claude Sonnet 4.5'
