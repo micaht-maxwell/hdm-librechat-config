@@ -84,7 +84,7 @@ mcpServers:
       token_url: 'https://oauth2.googleapis.com/token'
       client_id: '${GOOGLE_MCP_CLIENT_ID}'
       client_secret: '${GOOGLE_MCP_CLIENT_SECRET}'
-      scope: 'https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.compose'
+      scope: 'https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.compose'
       redirect_uri: 'https://librechat-production-a04a.up.railway.app/api/mcp/gmail/oauth/callback'
       token_exchange_method: default_post
 
