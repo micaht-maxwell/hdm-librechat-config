@@ -18,23 +18,6 @@ endpoints:
       dropParams: ['stop']
 
 # ---------------------------------------------------------------
-# Model specs — this instance requires one to be defined
-# ---------------------------------------------------------------
-modelSpecs:
-  enforce: false
-  prioritize: true
-  addedEndpoints:
-    - agents
-  list:
-    - name: 'or-sonnet'
-      label: 'Claude Sonnet 4.5'
-      default: true
-      description: 'Claude Sonnet 4.5 via OpenRouter'
-      preset:
-        endpoint: 'OpenRouter'
-        model: 'anthropic/claude-sonnet-4.5'
-
-# ---------------------------------------------------------------
 # Connectors
 # Deliberately NOT included, per Ian: zoho_books, zoho_leads
 # ---------------------------------------------------------------
